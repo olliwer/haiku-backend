@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 
 app.get('/', function(req, res) {
-	if (req.is('json')) {
+	if (req.accepted.some(function(type) {return type.value === 'application/json';})) {
     	res.send('Greetings, traveler! Try /instructions.');
 	} else {
 		res.send('Try JSON.');
