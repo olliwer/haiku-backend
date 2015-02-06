@@ -31,7 +31,7 @@ app.get('/secret', function(req, res) {
 app.get('/challenge', function(req, res) {
 	if (acceptsJson(req)) {
 		res.send('Create a web application that takes in the following JSON as a POST ' +
-			'request. Further instructions follow. PUT the path to the following URL: /challenge/path-to-project. \n' + 
+			'request. Further instructions follow. PUT your applications URL to the following path: /challenge/path-to-project. \n' + 
 			JSON.stringify({"message": "string"}, null, 4));
 	}
 });
@@ -45,7 +45,7 @@ app.put('/challenge/:path', function(req, res) {
 				console.error(err); 
 				res.send("Error " + err); 
 			} else { 
-				res.send("Godspeed.");
+				res.send("Godspeed. We'll stay in touch.");
 			}
 		});
 	});
