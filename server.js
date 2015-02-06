@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 
 app.get('/', function(request, response) {
-  response.send('Hello Wappu!');
+  response.send('Hello Wappu! Try /instructions.');
 });
  
 app.get('/secret', function(req, res) {
@@ -18,5 +18,5 @@ app.get('/challenge', function(req, res) {
 	res.send([{name:'Create a web application that takes in the following JSON as a POST request. Further instructions follow. E-mail the URL to <e-mail>.'}]);
 });
 
-app.listen(3000);
-console.log('Listening on port 3000.');
+app.listen(process.env.PORT || 3000);
+console.log('Started.');
