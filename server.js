@@ -31,12 +31,12 @@ app.get('/secret', function(req, res) {
 app.get('/challenge', function(req, res) {
 	if (acceptsJson(req)) {
 		res.send('Create a web application that takes in the following JSON as a POST ' +
-			'request. Further instructions follow. Send the path to the following path: /challenge/path-to-project \n' + 
-			JSON.stringify({"content": {"message":"string","field1":"string","field2":"string"}}, null, 4));
+			'request. Further instructions follow. PUT the path to the following URL: /challenge/path-to-project. \n' + 
+			JSON.stringify({"message": "string"}, null, 4));
 	}
 });
 
-app.get('/challenge/:path', function(req, res) {
+app.put('/challenge/:path', function(req, res) {
 	var path = req.params.path;	
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 		client.query('INSERT INTO PARTICIPANT(path) VALUES (\'' + path + '\')', function(err, result){
