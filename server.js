@@ -1,6 +1,10 @@
 var express = require('express');
  
 var app = express();
+
+app.get('/', function(request, response) {
+  response.send('Hello Wappu!');
+});
  
 app.get('/secret', function(req, res) {
     res.send([{key:'wappu15'}, {type:'AES 128'}, {message:'YMvASzfz3II4WtuMlrOUQkQ2C2XLxcODRcMhG/T117+VAu42v04/5fGqYBz2+ytSNyDGtRorWCqwIqFDF63H4g=='}]);
