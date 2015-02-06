@@ -9,7 +9,7 @@ function acceptsJson(req){
 
 app.get('/', function(req, res) {
 	if (acceptsJson(req)) {
-    	res.send('Greetings, traveler! Try /instructions.');
+		res.send('Greetings, traveler! Try /instructions.');
 	} else {
 		res.send('Try JSON.');
 	}
@@ -17,21 +17,21 @@ app.get('/', function(req, res) {
 
 app.get('/instructions', function(req, res) {
 	if (acceptsJson(req)) {
-    	res.send('Follow the secret path.');
+		res.send('Follow the secret path.');
     }
 });
  
 app.get('/secret', function(req, res) {
 	if (acceptsJson(req)) {
-    	res.json([{key:'wappu15'}, {message:'YMvASzfz3II4WtuMlrOUQkQ2C2XLxcODRcMhG/T117+VAu42v04/' +
-    		'5fGqYBz2+ytSNyDGtRorWCqwIqFDF63H4g=='}]);
-    }
+		res.json([{key:'wappu15'}, {message:'YMvASzfz3II4WtuMlrOUQkQ2C2XLxcODRcMhG/T117+VAu42v04/' +
+		'5fGqYBz2+ytSNyDGtRorWCqwIqFDF63H4g=='}]);
+	}
 });
 
 app.get('/challenge', function(req, res) {
 	if (acceptsJson(req)) {
-		res.send('Create a web application that takes in the following JSON as a POST ' +
-			'request. Further instructions follow. PUT your applications URL to the following path: /challenge/path-to-project. \n' + 
+		res.send('Create a web application that takes in the following JSON as a POST request. Further ' + 
+			'instructions follow. PUT your applications URL to the following path: /challenge/path-to-project. \n' + 
 			JSON.stringify({"message": "string"}, null, 4));
 	}
 });
