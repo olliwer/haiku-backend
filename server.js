@@ -16,7 +16,7 @@ app.get('/secret', function(req, res) {
 });
 
 app.get('/instructions', function(req, res) {
-    res.send('There might be a secret API method.');
+    res.send('Follow the secret path.');
 });
 
 app.get('/challenge', function(req, res) {
