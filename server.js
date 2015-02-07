@@ -36,8 +36,7 @@ app.get('/button', function(req, res) {
  
 app.get('/message', function(req, res) {
 	if (acceptsJson(req)) {
-		res.json([{key:'wappu15'}, {message:'YMvASzfz3II4WtuMlrOUQkQ2C2XLxcODRcMhG/T117+VAu42v04/' +
-		'5fGqYBz2+ytSNyDGtRorWCqwIqFDF63H4g=='}]);
+		res.json([{key:'wappu15'}, {message:'om2dSfSrjIroKguSVmZO6oWbIXwSab6huhVqlzKn9dA3IMa1GitYKrAioUMXrcfi'}]);
 	}
 });
 
