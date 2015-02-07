@@ -1,17 +1,18 @@
 {
-    "name": "haiku-challenge",
-    "description": "Haiku Challenge backend",
-    "version": "0.0.1",
-    "private": true,
-    "main": "server.js",
-    "scripts": {
-      "start": "node server.js"
-    },
-    "engines": {
-      "node": "0.10.x"
-    },
-    "dependencies": {
-        "express": "3.x",
-        "pg": "4.x"
-    }
+  "name": "haiku-challenge",
+  "description": "Haiku Challenge backend",
+  "version": "0.0.1",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "dependencies": {
+    "ejs": "^2.2.4",
+    "express": "3.x",
+    "pg": "4.x"
+  }
 }
