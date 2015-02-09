@@ -84,7 +84,7 @@ app.post('/challenge', function(req, res) {
 		});
 	});
 	} else {
-		res.json({message: "Please provide all values."});
+		res.status(400).json({message: "Please provide all values."});
 	}
 
 });
