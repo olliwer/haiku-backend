@@ -14,20 +14,26 @@ function acceptsJson(req){
 
 app.get('/', function(req, res) {
 	if (acceptsJson(req)) {
-		res.send('Greetings, traveler! Try /instructions.');
+		res.json('Greetings, traveler! Try /instructions.');
 	} else {
-		res.send('Try JSON.');
+		res.send(406);
 	}
 });
 
 app.get('/instructions', function(req, res) {
 	if (acceptsJson(req)) {
-		res.send('Follow the secret path.');
+		res.json('Follow the secret path.');
+    } else {
+    	res.send(406);
     }
 });
 
 app.get('/secret', function(req, res) {
-	res.send('Open the button in a web browser.');
+	if (acceptsJson(req)) {
+		res.json('Open the button in a web browser.');
+	} else {
+		res.send(406);
+	}
 })
 
 app.get('/button', function(req, res) {
