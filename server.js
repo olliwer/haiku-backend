@@ -1,11 +1,13 @@
 var express = require('express');
 var pg = require('pg');
- 
+var bodyParser = require('body-parser');
+
 var app = express();
 
 app.set('views', __dirname + '/public');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
+app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
 function acceptsJson(req){
@@ -52,26 +54,38 @@ app.get('/message', function(req, res) {
 app.get('/challenge', function(req, res) {
 	if (acceptsJson(req)) {
 		res.send('Create a web application that persists the following JSON as a POST request. Further ' + 
-			'instructions follow. PUT your applications URL to the following path: /challenge/path-to-project. \n' + 
-			JSON.stringify({"message": "string"}, null, 4));
+			'instructions follow. \n' + 
+			JSON.stringify({"message": "string"}, null, 4) + '\n' + 
+			'POST your applications URL and your contact information to the following path: /challenge in the following JSON format: \n' +
+			JSON.stringify({"url": "string", "name": "string", "e-mail": "string"}, null, 4));
 	} else {
 		res.send(406);
 	}
 });
 
-app.put('/challenge/:path', function(req, res) {
-	var path = req.params.path;	
-	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-		client.query('INSERT INTO PARTICIPANT(path) VALUES (\'' + path + '\')', function(err, result){
+
+app.post('/challenge', function(req, res) {
+	if (!req.is('json')){
+		res.send(415);
+	}
+	var url = req.body.url;
+	var name = req.body.name;
+	var email = req.body.email;
+	if (url && name && email){
+		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+		client.query('INSERT INTO PARTICIPANT(path, email, name) VALUES (?, ?, ?)' [url, name, email], function(err, result){
 			done();
 			if (err) { 
 				console.error(err); 
-				res.send("Error " + err); 
+				res.json({message: "Caught an error. Please check your query and try again."}); 
 			} else { 
-				res.send("Godspeed. We'll stay in touch.");
+				res.json({message: "Godspeed. We'll stay in touch."});
 			}
 		});
 	});
+	} else {
+		res.json({message: "Please provide all values."});
+	}
 
 });
 
