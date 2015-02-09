@@ -73,7 +73,7 @@ app.post('/challenge', function(req, res) {
 	var email = req.body.email;
 	if (url && name && email){
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-		client.query('INSERT INTO PARTICIPANT(path, email, name) VALUES (?, ?, ?)' [url, name, email], function(err, result){
+		client.query('INSERT INTO PARTICIPANT(path, email, name) VALUES ($1, $2, $3)', [url, name, email], function(err, result){
 			done();
 			if (err) { 
 				console.error(err); 
