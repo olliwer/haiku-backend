@@ -14,7 +14,7 @@ function acceptsJson(req){
 
 app.get('/', function(req, res) {
 	if (acceptsJson(req)) {
-		res.json('Greetings, traveler! Try /instructions.');
+		res.json({message: 'Greetings, traveler! Try /instructions.'});
 	} else {
 		res.send(406);
 	}
@@ -22,7 +22,7 @@ app.get('/', function(req, res) {
 
 app.get('/instructions', function(req, res) {
 	if (acceptsJson(req)) {
-		res.json('Follow the secret path.');
+		res.json({message: 'Follow the secret path.'});
     } else {
     	res.send(406);
     }
@@ -30,7 +30,7 @@ app.get('/instructions', function(req, res) {
 
 app.get('/secret', function(req, res) {
 	if (acceptsJson(req)) {
-		res.json('Open the button in a web browser.');
+		res.json({message: 'Open the button in a web browser.'});
 	} else {
 		res.send(406);
 	}
@@ -51,6 +51,8 @@ app.get('/challenge', function(req, res) {
 		res.send('Create a web application that persists the following JSON as a POST request. Further ' + 
 			'instructions follow. PUT your applications URL to the following path: /challenge/path-to-project. \n' + 
 			JSON.stringify({"message": "string"}, null, 4));
+	} else {
+		res.send(406);
 	}
 });
 
