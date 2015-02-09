@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "ejs": "^2.2.4",
+    "body-parser": "^1.4.3",
     "express": "3.x",
     "pg": "4.x"
   }
