@@ -42,7 +42,10 @@ app.get('/button', function(req, res) {
  
 app.get('/message', function(req, res) {
 	if (acceptsJson(req)) {
+		res.set({'Hint': 'Joan Daemen probably was a good guy.'});
 		res.json([{key:'wappu15'}, {message:'om2dSfSrjIroKguSVmZO6oWbIXwSab6huhVqlzKn9dA3IMa1GitYKrAioUMXrcfi'}]);
+	} else {
+		res.send(406);
 	}
 });
 
