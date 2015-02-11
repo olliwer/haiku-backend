@@ -18,6 +18,7 @@ app.get('/', function(req, res) {
 	if (acceptsJson(req)) {
 		res.json({message: 'Greetings, traveler! Try /instructions.'});
 	} else {
+		res.set({'Hint': 'What would Crockford do?'});
 		res.send(406);
 	}
 });
