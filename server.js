@@ -57,10 +57,12 @@ app.get('/message', function(req, res) {
 
 app.get('/challenge', function(req, res) {
 	if (acceptsJson(req)) {
-		res.send('Create a web application that persists the following JSON as a POST request. Further ' + 
-			'instructions follow. \n' + 
-			JSON.stringify({"message": "string"}, null, 4) + '\n' + 
-			'POST your applications URL and your contact information to the following path: /challenge in the following JSON format: \n' +
+		res.send('Create a web application that will receive a POST request containing two variables in the request body. '
+			+ 'Your application has to be publicly available and it will be tested on submission. Your application recieve a POST request with the body: \n' + 
+			JSON.stringify({"number1": 1, "number2": 2}, null, 4) + '\n' + 
+			'Your server must answer with the addition of the two numbers. The answers body should look like: \n' +
+			JSON.stringify({"result": 3}, null, 4) + '\n' +
+			'After you have the server running, POST your applications URL and your contact information to the following path: /challenge in the following JSON format: \n' +
 			JSON.stringify({"url": "string", "name": "string", "e-mail": "string"}, null, 4));
 	} else {
 		res.send(406);
