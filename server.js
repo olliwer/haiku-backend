@@ -63,7 +63,7 @@ app.get('/challenge', function(req, res) {
 			'Your server must answer with the addition of the two numbers. The answers body should look like: \n' +
 			JSON.stringify({"result": 3}, null, 4) + '\n' +
 			'After you have the server running, POST your applications URL and your contact information to the following path: /challenge in the following JSON format: \n' +
-			JSON.stringify({"url": "string", "name": "string", "e-mail": "string"}, null, 4));
+			JSON.stringify({"url": "string", "name": "string", "email": "string"}, null, 4));
 	} else {
 		res.send(406);
 	}
